@@ -10,7 +10,7 @@ class Controller:
         self._model = model
 
     def handleCalcola(self, e):
-
+        self._view._txt_result.controls.clear()
         if 1816<=int(self._view._txtAnno.value)<=2016:
             self._model.creaGrafo(self._view._txtAnno.value)
         else:
@@ -19,9 +19,9 @@ class Controller:
 
         num = self._model.connessioni()
 
-        self._view._txt_result.control.append(ft.Text(f"Componenti connesse: {num}"))
+        self._view._txt_result.controls.append(ft.Text(f"Componenti connesse: {num}"))
 
         for c in self._model.grafo.nodes:
-            self._view._txt_result.control.append(ft.Text(f"{c.StateNme} -- {self._model.contavicini(c)}"))
+            self._view._txt_result.controls.append(ft.Text(f"{c.StateNme} -- {self._model.contavicini(c)}"))
 
         self._view.update_page()
