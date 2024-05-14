@@ -43,7 +43,7 @@ class Model:
         #devo aggiungere per forza 1 arco alla volta, tutti insieme non so :(
         for e in edges:
             u = self.idMap[e.state1no] #prendo l'oggetto country dal codice in comune
-            v = self.idMap[e.state2no] #stessa cosa
+            v = self.idMap[e.state2no] #stessa cosa qui sotto
             self.grafo.add_edge(u,v) #aggiungo il singolo non pesato
 
         print("ponti aggiunti")
