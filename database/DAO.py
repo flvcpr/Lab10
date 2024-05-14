@@ -48,7 +48,6 @@ class DAO():
         cursor = conn.cursor(dictionary=True)
         query = """select * from contiguity c 
                     where c.`year` <= %s and c.conttype =1"""
-        #è sbagliato perche non metto oggetti country come nodi
         cursor.execute(query, (year,))
 
         for row in cursor:
