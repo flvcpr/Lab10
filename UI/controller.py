@@ -1,4 +1,5 @@
 import flet as ft
+import networkx as nx
 
 
 class Controller:
@@ -9,4 +10,18 @@ class Controller:
         self._model = model
 
     def handleCalcola(self, e):
-        pass
+
+        if 1816<=int(self._view._txtAnno.value)<=2016:
+            self._model.creaGrafo(self._view._txtAnno.value)
+        else:
+            self._view.create_alert("L'anno inserito non è corretto")
+            return
+
+        num = self._model.connessioni()
+
+        self._view._txt_result.control.append(ft.Text(f"Componenti connesse: {num}"))
+
+        for c in self._model.grafo.nodes:
+            self._view._txt_result.control.append(ft.Text(f"{c.StateNme} -- {self._model.contavicini(c)}"))
+
+        self._view.update_page()
